@@ -10,12 +10,12 @@
 </head>
 <body>
   <nav>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <ul>
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -484,6 +484,43 @@
         if (link.getAttribute('href') === '#' + current) link.classList.add('active');
       });
     });
+    
+    // Smooth scroll for nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({
+            top: target.offsetTop - 60,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+ // Mobile nav dropdown
+    document.addEventListener('DOMContentLoaded', function() {
+      const nav = document.querySelector('nav');
+      const navUl = nav.querySelector('ul');
+      // Create toggle button
+      const btn = document.createElement('button');
+      btn.className = 'nav-toggle';
+      btn.setAttribute('aria-label', 'Toggle navigation');
+      btn.innerHTML = '&#9776;';
+      nav.insertBefore(btn, navUl);
+      btn.addEventListener('click', function() {
+        navUl.classList.toggle('open');
+      });
+      // Close menu on link click (mobile)
+      navUl.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          if(window.innerWidth <= 700) navUl.classList.remove('open');
+        });
+      });
+    });
+
 
     // Section reveal on scroll
     const revealSections = () => {
