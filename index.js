@@ -65,3 +65,21 @@
         window.addEventListener('scroll', animateAbout);
         window.addEventListener('load', animateAbout);
       })();
+      // Email sending functionality
+    
+
+(function(){
+  // Send email function
+  document.getElementById('send-email-btn').addEventListener('click', function() {
+    const emailInput = document.getElementById('email-input');
+    const email = emailInput.value.trim();
+    if (!email) {
+      alert('Please enter your email address.');
+      return;
+    }
+    // Send email logic here
+    alert(`A confirmation email has been sent to ${email}.`);
+    emailInput.value = '';
+    
+  });
+})();

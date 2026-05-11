@@ -394,3 +394,44 @@
       .home h1 { font-size: 2.1rem; }
       .home h2 { font-size: 1.1rem; }
     }
+
+/* --- Floating Music Icon --- */
+.music-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 2.2rem;
+  color: #ffb400;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  padding: 18px;
+  box-shadow: 0 0 15px rgba(255, 180, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  animation: float 3s ease-in-out infinite;
+  backdrop-filter: blur(8px);
+}
+
+.music-icon:hover {
+  transform: scale(1.2);
+  color: #fff;
+  box-shadow: 0 0 30px rgba(255, 180, 0, 0.8);
+}
+
+.music-icon.playing {
+  animation: pulse 1.5s infinite;
+  color: #00ffcc;
+  box-shadow: 0 0 25px #00ffcc;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px #00ffcc; }
+  50% { transform: scale(1.2); box-shadow: 0 0 25px #00ffcc; }
+  100% { transform: scale(1); box-shadow: 0 0 10px #00ffcc; }
+}
